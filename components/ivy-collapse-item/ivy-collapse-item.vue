@@ -18,10 +18,7 @@
 
 <script setup>
 import { inject, computed, ref } from 'vue';
-import CollapseTransition from '../collapse-transition/index.js';
-// defineOptions({
-//     name: 'CollapseItem'
-// });
+import CollapseTransition from '../collapse-transition/collapse-transition.js';
 
 const props = defineProps({
     header: String,
@@ -67,6 +64,7 @@ const handleChange = () => {
         font-size: 14px;
         display: flex;
         align-items: center;
+        transition: all 0.3s;
         & > .ivy-icon-right {
             transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
             margin-right: 10px;
@@ -89,8 +87,8 @@ const handleChange = () => {
         box-sizing: border-box;
         font-size: 13px;
         will-change: height;
-        /* overflow: hidden; */
-        /* transition: all .3s; */
+        overflow: hidden;
+        transition: all 0.3s;
         &-box {
             padding: 16px 0;
         }
@@ -98,7 +96,7 @@ const handleChange = () => {
 }
 .ivy-collapse-item-active {
     .ivy-collapse-item__header {
-        border-bottom: 1px solid #dcdee2;
+        border-bottom-color: #dcdee2;
         & > .ivy-icon-right {
             transform: rotateZ(90deg);
         }

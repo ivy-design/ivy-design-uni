@@ -9,8 +9,17 @@
         {
             "path": "pages/components/collapse",
             "style": {
-                "navigationBarTitleText": "Collapse 折叠面板"
+                "navigationBarTitleText": "collapse 折叠面板"
             }
+        }
+        ,{
+            "path" : "pages/components/overlay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
     "globalStyle": {
@@ -18,5 +27,6 @@
         "navigationBarTitleText": "uni-app",
         "navigationBarBackgroundColor": "#F8F8F8",
         "backgroundColor": "#F8F8F8"
-    }
+    },
+    "uniIdRouter": {}
 }

@@ -1,6 +1,6 @@
 {
-    "name" : "",
-    "appid" : "",
+    "name" : "tmp",
+    "appid" : "__UNI__96C0311",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -65,8 +65,8 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     },
     "vueVersion" : "3"
 }

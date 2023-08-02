@@ -12,9 +12,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 /*每个页面公共css */
-.page {
+page {
     padding: 24rpx;
+    & .title {
+        font-size: 32rpx;
+        margin: 24rpx 0;
+        line-height: 2em;
+    }
 }
 </style>
