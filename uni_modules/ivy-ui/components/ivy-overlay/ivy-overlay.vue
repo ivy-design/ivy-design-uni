@@ -57,9 +57,9 @@ const handlerMaskClick = () => {
 
     &-enter-active,
     &-leave-active {
-        transition: transform 0.3s, operate 0.2s;
+        transition: opacity 0.3s ease;
         .ivy-overlay__inner {
-            transition: transform 0.3s;
+            transition: transform 0.3s ease-in;
         }
     }
 

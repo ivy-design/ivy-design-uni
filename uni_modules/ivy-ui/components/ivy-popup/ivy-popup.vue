@@ -61,10 +61,9 @@ const size = computed(() => {
 .ivy-popup {
     position: fixed;
     width: 750rpx;
+    height: 100%;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 1000;
 
     &.is-mask {
@@ -114,8 +113,8 @@ const size = computed(() => {
 
     &-enter-active,
     &-leave-active {
-        transition: transform 0.3s, operate 0.2s;
-        .ivy-popup__inner {
+        transition: opacity 0.3s ease;
+        & .ivy-popup__inner {
             transition: transform 0.3s;
         }
     }
