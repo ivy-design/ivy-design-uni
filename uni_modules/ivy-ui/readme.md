@@ -1,4 +1,4 @@
-# ivy-design-uni
+# ivy-ui
 
 一个使用 vue3 开发的 uni-app 通用组件库
 
@@ -10,9 +10,10 @@
 
 ## 已有组件
 
+- CollapseTransition 基础展开折叠动画
 - Icon 图标
 - Collapse 折叠面板
-- Overlay 弹出层
-- CollapseTransition 基础展开折叠动画
+- Overlay 遮罩层
+- Popup 弹出层
 
 

@@ -1,10 +1,14 @@
 <template>
     <view>
-        <button @click="handlerClick">123213</button>
+        <button @click="handlerClick">点击打开</button>
         <ivy-overlay v-model="visible">
-            dfasdfasfd fsdafsadf
+            弹层内容
             <br />
-            fsadfsdaf
+            弹层内容
+            <br />
+            弹层内容
+            <br />
+            弹层内容
         </ivy-overlay>
     </view>
 </template>

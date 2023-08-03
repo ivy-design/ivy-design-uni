@@ -3,7 +3,7 @@
         {
             "path": "pages/index",
             "style": {
-                "navigationBarTitleText": "uni-app"
+                "navigationBarTitleText": "ivy-ui"
             }
         },
         {
@@ -11,20 +11,32 @@
             "style": {
                 "navigationBarTitleText": "collapse 折叠面板"
             }
-        }
-        ,{
-            "path" : "pages/components/overlay",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
+        }, {
+            "path": "pages/components/overlay",
+            "style": {
+                "navigationBarTitleText": "Overlay 遮罩层",
                 "enablePullDownRefresh": false
             }
-            
+
+        }, {
+            "path": "pages/components/icon",
+            "style": {
+                "navigationBarTitleText": "Icon 图标",
+                "enablePullDownRefresh": false
+            }
+
+        }, {
+            "path": "pages/components/popup",
+            "style": {
+                "navigationBarTitleText": "Popup 弹出层",
+                "enablePullDownRefresh": false
+            }
+
         }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
+        "navigationBarTitleText": "ivy-ui",
         "navigationBarBackgroundColor": "#F8F8F8",
         "backgroundColor": "#F8F8F8"
     },

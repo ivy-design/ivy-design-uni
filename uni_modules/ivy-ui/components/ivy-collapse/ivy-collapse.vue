@@ -16,8 +16,9 @@ const props = defineProps({
     accordion: Boolean,
     arrow: {
         type: String,
-        validator(value) {
-            return ['right', 'none'].includes(value);
+        default: 'left',
+        validator(val) {
+            return ['left', 'right', 'none'].includes(val);
         }
     }
 });

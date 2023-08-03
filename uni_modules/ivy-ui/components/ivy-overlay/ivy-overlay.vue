@@ -1,7 +1,7 @@
 <template>
     <teleport to="body">
         <transition name="ivy-overlay">
-            <view class="ivy-overlay" v-show="visible" @click.stop="handlerMaskClick">
+            <view :class="['ivy-overlay', { 'is-mask': props.showMask }]" v-show="visible" @click.stop="handlerMaskClick">
                 <view class="ivy-overlay__inner">
                     <slot></slot>
                 </view>
@@ -23,6 +23,10 @@ const props = defineProps({
     width: {
         type: String,
         default: '90%'
+    },
+    maskClosable: {
+        type: Boolean,
+        default: true
     }
 });
 
@@ -30,7 +34,7 @@ const visible = computed(() => {
     return props.modelValue;
 });
 const handlerMaskClick = () => {
-    emit('update:modelValue', false);
+    if (props.showMask && props.maskClosable) emit('update:modelValue', false);
 };
 </script>
 
@@ -53,7 +57,7 @@ const handlerMaskClick = () => {
 
     &-enter-active,
     &-leave-active {
-        transition: transform 0.3s, operate 0.1s;
+        transition: transform 0.3s, operate 0.2s;
         .ivy-overlay__inner {
             transition: transform 0.3s;
         }

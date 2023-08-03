@@ -1,24 +1,23 @@
 <template>
     <view :class="['ivy-collapse-item', { 'ivy-collapse-item-active': isActive }]">
         <view class="ivy-collapse-item__header" @click="handleChange">
-            <!-- <Icon name="arrow-right" :class="['ivy-icon-right', `ivy-collapse-arrow-${arrowPosition}`]"></Icon> -->
+            <ivy-icon name="arrow-right" :class="['ivy-icon-right', `ivy-collapse-arrow-${arrowPosition}`]"></ivy-icon>
             <text>
                 <slot name="header">{{ props.header }}</slot>
             </text>
         </view>
-        <CollapseTransition>
+        <ivy-collapse-transition>
             <view v-show="isActive" class="ivy-collapse-item__wrap">
                 <view class="ivy-collapse-item__wrap-box">
                     <slot></slot>
                 </view>
             </view>
-        </CollapseTransition>
+        </ivy-collapse-transition>
     </view>
 </template>
 
 <script setup>
 import { inject, computed, ref } from 'vue';
-import CollapseTransition from '../collapse-transition/collapse-transition.js';
 
 const props = defineProps({
     header: String,
@@ -54,35 +53,39 @@ const handleChange = () => {
         border-top: 1px solid #dcdee2;
     }
     &__header {
-        height: 38px;
-        line-height: 38px;
-        padding-left: 16px;
+        height: 64rpx;
+        line-height: 64rpx;
+        padding-left: 24rpx;
         color: #666;
         cursor: pointer;
         position: relative;
         border-bottom: 1px solid transparent;
-        font-size: 14px;
+        font-size: 28rpx;
         display: flex;
         align-items: center;
         transition: all 0.3s;
         & > .ivy-icon-right {
+            will-change: transform;
+            transform-origin: center center;
             transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-            margin-right: 10px;
         }
-        & > .ivy-icon-right.ivy-collapse-arrow-right {
+        & > .ivy-collapse-arrow-left {
+            margin-right: 16rpx;
+        }
+        & > .ivy-collapse-arrow-right {
             position: absolute;
             right: 0;
             top: 50%;
-            margin-top: -7px;
-            margin-right: 16px;
+            margin-top: -14rpx;
+            margin-right: 32rpx;
         }
-        & > .ivy-icon-right.ivy-collapse-arrow-none {
+        & > .ivy-collapse-arrow-none {
             display: none;
         }
     }
     &__wrap {
         color: #515a6e;
-        padding: 0 16px;
+        padding: 0 24rpx;
         background-color: #ffffff;
         box-sizing: border-box;
         font-size: 13px;
@@ -90,7 +93,7 @@ const handleChange = () => {
         overflow: hidden;
         transition: all 0.3s;
         &-box {
-            padding: 16px 0;
+            padding: 24rpx 0;
         }
     }
 }

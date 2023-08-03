@@ -1,10 +1,6 @@
 <script setup>
 import { provide, toRef } from 'vue';
 
-defineOptions({
-    name: 'CellGroup'
-});
-
 const props = defineProps({
     border: Boolean
 });
@@ -19,7 +15,11 @@ provide('border', toRef(props, 'border'));
 </template>
 
 <style lang="scss">
-.is-border {
-    border: 1px solid #ddd;
+.ivy-cell-group {
+    border-radius: 4rpx;
+}
+
+.ivy-cell-group.is-border > .ivy-cell {
+    border-top: 1px solid $uni-border-color;
 }
 </style>

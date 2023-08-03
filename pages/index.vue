@@ -1,8 +1,11 @@
 <template>
     <view class="content">
-        <view class="text-area" v-for="item in list">
-            <navigator :url="item.link">{{ item.text }}</navigator>
-        </view>
+        <ivy-cell-group border>
+            <ivy-cell title="Icon 图标" to="/pages/components/icon"></ivy-cell>
+            <ivy-cell title="Collapse 折叠面板" to="/pages/components/collapse"></ivy-cell>
+            <ivy-cell title="Overlay 遮罩层" to="/pages/components/overlay"></ivy-cell>
+            <ivy-cell title="Popup 弹出层" to="/pages/components/popup"></ivy-cell>
+        </ivy-cell-group>
     </view>
 </template>
 
@@ -19,30 +22,4 @@ export default {
 };
 </script>
 
-<style>
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    height: 200rpx;
-    width: 200rpx;
-    margin-top: 200rpx;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50rpx;
-}
-
-.text-area {
-    display: flex;
-    justify-content: center;
-}
-
-.title {
-    font-size: 36rpx;
-    color: #8f8f94;
-}
-</style>
+<style></style>
