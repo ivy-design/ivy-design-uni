@@ -1,7 +1,11 @@
-## 0.1.0（2023-08-03）
+## 0.1.1（2023-08-04）
+Docs：
+- 更新使用说明
+## 0.1.0（2023-08-04）
 Feat：
 - 增加 `Icon` 组件
 - 增加 `Collapse`、`CollapseItem` 组件
 - 增加 `CollapseTranstion`  组件
 - 增加 `Overlay` 组件
 - 增加 `Popup` 组件
+- 增加 `ActionSheet` 动作面板

@@ -6,7 +6,7 @@
 
 ## 使用
 
-直接下载下来放到 `components` 文件夹下即可
+直接下载下来放到 `uni_modules` 文件夹下即可
 
 ## 已有组件
 
@@ -15,5 +15,6 @@
 - Collapse 折叠面板
 - Overlay 遮罩层
 - Popup 弹出层
+- ActionSheet 动作面板
 
 

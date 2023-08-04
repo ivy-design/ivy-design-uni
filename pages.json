@@ -33,6 +33,15 @@
             }
 
         }
+        ,{
+            "path" : "pages/components/action-sheet",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "black",
