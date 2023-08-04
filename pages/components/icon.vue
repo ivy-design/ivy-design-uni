@@ -1,50 +1,35 @@
 <template>
     <view>
-        <view class="demo">
-            <view class="title">基础用法</view>
-            <view class="description">通过 name 属性来设置显示的 icon</view>
-            <view>
-                <ivy-icon name="add-location"></ivy-icon>
-                <ivy-icon name="aim" class="margin-left"></ivy-icon>
-                <ivy-icon name="apple" class="margin-left"></ivy-icon>
-                <ivy-icon name="alarm-clock" class="margin-left"></ivy-icon>
-            </view>
-        </view>
+        <demo title="基础用法" description="通过 name 属性来设置显示的 icon">
+            <ivy-icon name="add-location"></ivy-icon>
+            <ivy-icon name="aim" class="margin-left"></ivy-icon>
+            <ivy-icon name="apple" class="margin-left"></ivy-icon>
+            <ivy-icon name="alarm-clock" class="margin-left"></ivy-icon>
+        </demo>
 
-        <view class="demo">
-            <view class="title">更改大小</view>
-            <view class="description">通过 size 属性来设置 icon 的大小</view>
-            <view>
-                <ivy-icon name="add-location"></ivy-icon>
-                <ivy-icon name="aim" class="margin-left" size="20px"></ivy-icon>
-                <ivy-icon name="apple" class="margin-left" size="24px"></ivy-icon>
-                <ivy-icon name="alarm-clock" class="margin-left" size="30px"></ivy-icon>
-            </view>
-        </view>
+        <demo title="更改大小" description="通过 size 属性来设置 icon 的大小">
+            <ivy-icon name="add-location"></ivy-icon>
+            <ivy-icon name="aim" class="margin-left" size="20px"></ivy-icon>
+            <ivy-icon name="apple" class="margin-left" size="24px"></ivy-icon>
+            <ivy-icon name="alarm-clock" class="margin-left" size="30px"></ivy-icon>
+        </demo>
 
-        <view class="demo">
-            <view class="title">更改颜色</view>
-            <view class="description">通过 color 属性来设置 icon 的颜色</view>
-            <view>
-                <ivy-icon name="add-location"></ivy-icon>
-                <ivy-icon name="aim" class="margin-left" color="red"></ivy-icon>
-                <ivy-icon name="apple" class="margin-left" color="blue"></ivy-icon>
-                <ivy-icon name="alarm-clock" class="margin-left" color="pink"></ivy-icon>
-            </view>
-        </view>
+        <demo title="更改颜色" description="通过 color 属性来设置 icon 的颜色">
+            <ivy-icon name="add-location"></ivy-icon>
+            <ivy-icon name="aim" class="margin-left" color="red"></ivy-icon>
+            <ivy-icon name="apple" class="margin-left" color="blue"></ivy-icon>
+            <ivy-icon name="alarm-clock" class="margin-left" color="pink"></ivy-icon>
+        </demo>
 
-        <view>
-            <view class="title">全部图标</view>
-            <view>
-                <ivy-cell-group border>
-                    <ivy-cell v-for="it in icons" :key="it" class="flex flex-row-space-between icon-list-item" :extra="it">
-                        <template #title>
-                            <ivy-icon :name="it"></ivy-icon>
-                        </template>
-                    </ivy-cell>
-                </ivy-cell-group>
-            </view>
-        </view>
+        <demo title="全部图标">
+            <ivy-cell-group border>
+                <ivy-cell v-for="it in icons" :key="it" class="flex flex-row-space-between icon-list-item" :extra="it">
+                    <template #title>
+                        <ivy-icon :name="it"></ivy-icon>
+                    </template>
+                </ivy-cell>
+            </ivy-cell-group>
+        </demo>
     </view>
 </template>
 
@@ -349,5 +334,6 @@ const icons = [
 <style lang="scss">
 .icon-list-item {
     line-height: 64rpx;
+    max-width: 100%;
 }
 </style>

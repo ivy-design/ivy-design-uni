@@ -1,10 +1,10 @@
 <template>
     <view class="demo">
         <view class="demo-title">
-            <slot name="title">{{ props.title }}</slot>
+            <slot name="title">{{ title }}</slot>
         </view>
         <view class="demo-description">
-            <slot name="description">{{ props.description }}</slot>
+            <slot name="description">{{ description }}</slot>
         </view>
         <view class="demo-content">
             <slot></slot>
@@ -12,15 +12,18 @@
     </view>
 </template>
 
-<script setup>
-const props = defineProps({
-    title: String,
-    description: String
-});
+<script>
+export default {
+    props: {
+        title: String,
+        description: String
+    }
+};
 </script>
 
 <style scoped lang="scss">
 .demo {
+    box-sizing: border-box;
     padding: 24rpx;
     font-size: 24rpx;
     &-title {

@@ -16,21 +16,7 @@ export default {
 /*每个页面公共css */
 page {
     color: #333;
-    padding: 24rpx;
-    .demo {
-        & > view,
-        & > uni-view {
-            margin: 24rpx 0;
-        }
-    }
-    & .title {
-        font-size: 28rpx;
-        margin: 24rpx 0;
-        line-height: 2em;
-    }
-    & .description {
-        color: #666;
-    }
+    box-sizing: border-box;
 }
 .flex {
     display: flex;

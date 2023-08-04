@@ -1,40 +1,55 @@
 <template>
-    <teleport to="body">
-        <transition name="ivy-overlay">
-            <view :class="['ivy-overlay', { 'is-mask': props.showMask }]" v-show="visible" @click.stop="handlerMaskClick">
-                <view class="ivy-overlay__inner">
-                    <slot></slot>
-                </view>
-            </view>
-        </transition>
-    </teleport>
+    <view :class="['ivy-overlay', { 'is-mask': showMask, 'is-show': modelValue }]" v-show="visible" @click.stop="handlerMaskClick">
+        <view class="ivy-overlay__inner">
+            <slot></slot>
+        </view>
+    </view>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue';
-const emit = defineEmits(['on-mask-click', 'update:modelValue']);
-
-const props = defineProps({
-    modelValue: Boolean,
-    showMask: {
-        type: Boolean,
-        default: true
+<script>
+export default {
+    props: {
+        modelValue: Boolean,
+        showMask: {
+            type: Boolean,
+            default: true
+        },
+        width: {
+            type: String,
+            default: '90%'
+        },
+        maskClosable: {
+            type: Boolean,
+            default: true
+        }
     },
-    width: {
-        type: String,
-        default: '90%'
+    emits: ['on-mask-click', 'update:modelValue'],
+    data() {
+        return {
+            animationData: {},
+            animation: null
+        };
     },
-    maskClosable: {
-        type: Boolean,
-        default: true
+    methods: {
+        handlerMaskClick() {
+            if (this.showMask && this.maskClosable) {
+                console.log(123);
+                this.$emit('update:modelValue', false);
+            }
+        }
+    },
+    computed: {
+        visible() {
+            return this.modelValue;
+        }
+    },
+    watch: {
+        modelValue: {
+            handler(val) {
+                console.log('watch', val);
+            }
+        }
     }
-});
-
-const visible = computed(() => {
-    return props.modelValue;
-});
-const handlerMaskClick = () => {
-    if (props.showMask && props.maskClosable) emit('update:modelValue', false);
 };
 </script>
 
@@ -50,7 +65,11 @@ const handlerMaskClick = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    opacity: 0;
+    transition: opacity 3s ease-out;
+    &.is-show {
+        opacity: 1;
+    }
     &__inner {
         background-color: #ffffff;
     }
