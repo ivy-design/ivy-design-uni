@@ -1,9 +1,11 @@
 <template>
-    <view :class="['ivy-overlay', { 'is-mask': showMask, 'is-show': modelValue }]" v-show="visible" @click.stop="handlerMaskClick">
-        <view class="ivy-overlay__inner">
-            <slot></slot>
-        </view>
-    </view>
+	<transition name="ivy-overlay">
+		<view :class="['ivy-overlay', { 'is-mask': showMask, 'is-show': modelValue }]" v-show="visible" @click.stop="handlerMaskClick">
+			<view class="ivy-overlay__inner">
+				<slot></slot>
+			</view>
+		</view>
+	</transition>
 </template>
 
 <script>
@@ -24,16 +26,9 @@ export default {
         }
     },
     emits: ['on-mask-click', 'update:modelValue'],
-    data() {
-        return {
-            animationData: {},
-            animation: null
-        };
-    },
     methods: {
         handlerMaskClick() {
             if (this.showMask && this.maskClosable) {
-                console.log(123);
                 this.$emit('update:modelValue', false);
             }
         }
@@ -43,13 +38,6 @@ export default {
             return this.modelValue;
         }
     },
-    watch: {
-        modelValue: {
-            handler(val) {
-                console.log('watch', val);
-            }
-        }
-    }
 };
 </script>
 

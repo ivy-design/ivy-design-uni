@@ -1,32 +1,30 @@
 <template>
-    <teleport to="body">
-        <transition name="ivy-popup">
-            <view :class="['ivy-popup', { 'is-mask': props.showMask }, ...(attrs?.class ?? [])]" v-show="visible" @click.stop="handlerMaskClick">
-                <view :class="['ivy-popup__inner', 'ivy-as']">
-                    <view class="ivy-as-header" v-if="slots.header || props.header">
-                        <slot name="header">{{ props.header }}</slot>
-                    </view>
-                    <view class="ivy-as-action">
-                        <view
-                            v-for="(item, index) in actions"
-                            :key="item.name"
-                            @click.stop="handleClickItem(item)"
-                            :class="['ivy-as-action-item', { 'is-disabled': item.disabled }]"
-                        >
-                            <slot :item="item">
-                                <ivy-icon v-if="item.icon" :name="item.icon" class="ivy-as-btn-icon"></ivy-icon>
-                                <view class="ivy-as-btn-text" :style="item.color ? 'color: ' + item.color : ''">{{ item.name }}</view>
-                            </slot>
-                        </view>
-                    </view>
-                    <view class="ivy-as-cancel" v-if="props.showCancel === true">
-                        <view class="ivy-as-divider"></view>
-                        <view @click.stop="handleClickCancel" class="ivy-as-cancel-btn">{{ props.cancelText }}</view>
-                    </view>
-                </view>
-            </view>
-        </transition>
-    </teleport>
+	<transition name="ivy-popup">
+		<view :class="['ivy-popup', { 'is-mask': props.showMask }, ...(attrs?.class ?? [])]" v-show="visible" @click.stop="handlerMaskClick">
+			<view :class="['ivy-popup__inner', 'ivy-as']">
+				<view class="ivy-as-header" v-if="slots.header || props.header">
+					<slot name="header">{{ props.header }}</slot>
+				</view>
+				<view class="ivy-as-action">
+					<view
+						v-for="(item, index) in actions"
+						:key="item.name"
+						@click.stop="handleClickItem(item)"
+						:class="['ivy-as-action-item', { 'is-disabled': item.disabled }]"
+					>
+						<slot :item="item">
+							<ivy-icon v-if="item.icon" :name="item.icon" class="ivy-as-btn-icon"></ivy-icon>
+							<view class="ivy-as-btn-text" :style="item.color ? 'color: ' + item.color : ''">{{ item.name }}</view>
+						</slot>
+					</view>
+				</view>
+				<view class="ivy-as-cancel" v-if="props.showCancel === true">
+					<view class="ivy-as-divider"></view>
+					<view @click="handleClickCancel" class="ivy-as-cancel-btn">{{ props.cancelText }}</view>
+				</view>
+			</view>
+		</view>
+	</transition>
 </template>
 
 <script setup>

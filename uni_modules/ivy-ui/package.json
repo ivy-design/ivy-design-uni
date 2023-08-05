@@ -1,7 +1,7 @@
 {
     "id": "ivy-ui",
     "displayName": "ivy-ui",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "一个使用 vue3 开发的通用 uni-app 组件库",
     "keywords": [
         "ivy-ui"

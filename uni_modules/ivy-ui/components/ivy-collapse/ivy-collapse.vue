@@ -4,55 +4,50 @@
     </view>
 </template>
 
-<script setup>
-import { ref, provide } from 'vue';
-import useIndex from '@/use/useIndex.js';
-// defineOptions({
-//     name: 'Collapse'
-// });
+<script>
+import { ref, provide, toRef } from 'vue';
+import useIndex from '../../use/useIndex.js';
 
-const props = defineProps({
-    modelValue: [String, Number, Array],
-    accordion: Boolean,
-    arrow: {
-        type: String,
-        default: 'left',
-        validator(val) {
-            return ['left', 'right', 'none'].includes(val);
-        }
-    }
-});
-
-const emit = defineEmits(['update:modelValue']);
-
-const value = ref(props.modelValue);
-if (!props.modelValue) {
-    value.value = props.accordion ? null : [];
+export default {
+	props: {
+		modelValue: [String, Number, Array],
+		accordion: Boolean,
+		arrow: {
+		    type: String,
+		    default: 'left',
+		    validator(val) {
+		        return ['left', 'right', 'none'].includes(val);
+		    }
+		}
+	},
+	setup(props, { emit }){
+		const value = ref(props.modelValue)
+		if(!value.value){
+			value.value = props.accordion ? null : []
+		}
+		const { nextIndex } = useIndex()
+		
+		provide('accordion', toRef(props, 'accordion'))
+		provide('arrow', toRef(props, 'arrow'))
+		provide('value', value)
+		provide('nextIndex', nextIndex)
+		provide('update', index => {
+				if (props.accordion) {
+				    value.value = value.value === index ? null : index;
+				    emit('update:modelValue', value.value);
+				} else {
+				    const has = value.value.includes(index);
+				    if (has) {
+				        value.value = value.value.filter((c) => c !== index);
+				    } else {
+				        value.value = [...value.value, index];
+				    }
+				    emit('update:modelValue', value.value);
+				}
+			})
+	},
+	emits: ['update:modelValue']
 }
-
-provide('arrow', props.arrow);
-provide('accordion', props.accordion);
-provide('value', value);
-/**对 没有设置 props.index 的collapseItem 生成唯一index */
-const { nextIndex } = useIndex();
-
-provide('nextIndex', nextIndex);
-
-provide('update', (index) => {
-    console.log('collapse', index, props.accordion);
-    if (props.accordion) {
-        value.value = value.value === index ? null : index;
-        emit('update:modelValue', value.value);
-    } else {
-        const has = value.value.includes(index);
-        if (has) {
-            value.value = value.value.filter((c) => c !== index);
-        } else {
-            value.value = [...value.value, index];
-        }
-        emit('update:modelValue', value.value);
-    }
-});
 </script>
 
 <style lang="scss">

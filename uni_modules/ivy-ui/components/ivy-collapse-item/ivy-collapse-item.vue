@@ -1,9 +1,9 @@
 <template>
     <view :class="['ivy-collapse-item', { 'ivy-collapse-item-active': isActive }]">
-        <view class="ivy-collapse-item__header" @click="handleChange">
-            <ivy-icon name="arrow-right" :class="['ivy-icon-right', `ivy-collapse-arrow-${arrowPosition}`]"></ivy-icon>
+        <view class="ivy-collapse-item__header" @click="handlerChange">
+            <ivy-icon name="arrow-right" :class="['ivy-icon-right', `ivy-collapse-arrow-${arrow}`]"></ivy-icon>
             <text>
-                <slot name="header">{{ props.header }}</slot>
+                <slot name="header">{{ header }}</slot>
             </text>
         </view>
         <ivy-collapse-transition>
@@ -16,34 +16,42 @@
     </view>
 </template>
 
-<script setup>
-import { inject, computed, ref } from 'vue';
-
-const props = defineProps({
-    header: String,
-    index: [String, Number]
-});
-
-const arrowPosition = inject('arrow');
-const collapseValue = inject('value');
-const accordion = inject('accordion');
-const update = inject('update');
-
-const nextIndex = inject('nextIndex');
-
-const index = props.index ? ref(props.index) : nextIndex();
-
-const isActive = computed(() => {
-    if (accordion) {
-        return index.value === collapseValue.value;
-    } else {
-        return collapseValue.value?.includes(index);
-    }
-});
-
-const handleChange = () => {
-    update(index);
-};
+<script>
+import { computed, inject, ref } from 'vue'
+export default {
+	props: {
+		header: String,
+		index: [String, Number]
+	},
+	setup(props){
+		const arrow = inject('arrow')
+		const value = inject('value')
+		const accordion = inject('accrodion', ref(false))
+		const update = inject('update')
+		const nextIndex = inject('nextIndex')
+		
+		const curIndex = props.index ? props.index : nextIndex()
+		
+		
+		const isActive = computed(()=>{
+			
+			if(accordion.value){
+				return value.value === curIndex
+			}else {
+				return value.value.includes(curIndex)
+			}
+		})
+		
+		const handlerChange = () => {
+			update(curIndex)
+		}
+		return {
+			arrow,
+			handlerChange,
+			isActive
+		}
+	}
+}
 </script>
 
 <style lang="scss">
