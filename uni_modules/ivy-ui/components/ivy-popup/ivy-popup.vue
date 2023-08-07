@@ -1,5 +1,5 @@
 <template>
-    <uni-transition :mode-class="fade" :duration="200" :custom-class="showMask ? 'ivy-popup is-mask' : 'ivy-popup'" :show="visible" @click="handlerMaskClick">
+    <uni-transition mode-class="fade" :duration="200" :custom-class="showMask ? 'ivy-popup is-mask' : 'ivy-popup'" :show="visible" @click="handlerMaskClick">
         <uni-transition :mode-class="`slide-${placement}`" :custom-class="`ivy-popup__inner is-${placement}`" :styles="getSize" :show="visible">
             <slot></slot>
         </uni-transition>
