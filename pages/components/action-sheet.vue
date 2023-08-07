@@ -16,7 +16,7 @@
             <button @click="handlerClick3">点击打开</button>
             <ivy-action-sheet v-model="visible3" :actions="actions3"></ivy-action-sheet>
         </demo>
-        <demo title="添加图标" description="在 actions 数据中增加 disabled 属性可以禁用此项">
+        <demo title="禁用选项" description="在 actions 数据中增加 disabled 属性可以禁用此项">
             <button @click="handlerClick4">点击打开</button>
             <ivy-action-sheet v-model="visible4" :actions="actions4"></ivy-action-sheet>
         </demo>

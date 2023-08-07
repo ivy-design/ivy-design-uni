@@ -1,58 +1,56 @@
 <template>
-	<transition name="ivy-popup">
-		<view :class="['ivy-popup', { 'is-mask': showMask }, ...($attrs?.class ?? [])]" v-show="visible" @click.stop="handlerMaskClick">
-			<view :class="['ivy-popup__inner', `is-${placement}`]" :style="getSize">
-				<slot></slot>
-			</view>
-		</view>
-	</transition>
+    <uni-transition :mode-class="fade" :duration="200" :custom-class="showMask ? 'ivy-popup is-mask' : 'ivy-popup'" :show="visible" @click="handlerMaskClick">
+        <uni-transition :mode-class="`slide-${placement}`" :custom-class="`ivy-popup__inner is-${placement}`" :styles="getSize" :show="visible">
+            <slot></slot>
+        </uni-transition>
+    </uni-transition>
 </template>
 
 <script>
 export default {
-	props: {
-		modelValue: Boolean,
-		showMask: {
-		    type: Boolean,
-		    default: true
-		},
-		size: {
-		    type: String,
-		    default: '50%'
-		},
-		maskClosable: {
-		    type: Boolean,
-		    default: true
-		},
-		placement: {
-		    type: String,
-		    default: 'bottom'
-		}
-	},
-	emits: ['on-mask-click', 'update:modelValue'],
-	methods: {
-		handlerMaskClick(){
-			if (this.showMask && this.maskClosable) this.$emit('update:modelValue', false);
-		}
-	},
-	computed:{
-		visible(){
-			return this.modelValue
-		},
-		getSize(){
-			const isX = ['left', 'right'].includes(this.placement);
-			if (isX) {
-			    return {
-			        width: this.size
-			    };
-			} else {
-			    return {
-			        height: this.size
-			    };
-			}
-		}
-	}
-}
+    props: {
+        modelValue: Boolean,
+        showMask: {
+            type: Boolean,
+            default: true
+        },
+        size: {
+            type: String,
+            default: '50%'
+        },
+        maskClosable: {
+            type: Boolean,
+            default: true
+        },
+        placement: {
+            type: String,
+            default: 'bottom'
+        }
+    },
+    emits: ['on-mask-click', 'update:modelValue'],
+    methods: {
+        handlerMaskClick() {
+            if (this.showMask && this.maskClosable) this.$emit('update:modelValue', false);
+        }
+    },
+    computed: {
+        visible() {
+            return this.modelValue;
+        },
+        getSize() {
+            const isX = ['left', 'right'].includes(this.placement);
+            if (isX) {
+                return {
+                    width: this.size
+                };
+            } else {
+                return {
+                    height: this.size
+                };
+            }
+        }
+    }
+};
 </script>
 
 <style lang="scss">

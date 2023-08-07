@@ -1,11 +1,7 @@
 <template>
-	<transition name="ivy-overlay">
-		<view :class="['ivy-overlay', { 'is-mask': showMask, 'is-show': modelValue }]" v-show="visible" @click.stop="handlerMaskClick">
-			<view class="ivy-overlay__inner">
-				<slot></slot>
-			</view>
-		</view>
-	</transition>
+    <uni-transition mode-class="fade" :custom-class="showMask ? 'ivy-overlay is-mask' : 'ivy-overlay'" :show="visible" @click="handlerMaskClick">
+        <slot></slot>
+    </uni-transition>
 </template>
 
 <script>
@@ -25,11 +21,12 @@ export default {
             default: true
         }
     },
-    emits: ['on-mask-click', 'update:modelValue'],
+    emits: ['close', 'update:modelValue'],
     methods: {
         handlerMaskClick() {
             if (this.showMask && this.maskClosable) {
                 this.$emit('update:modelValue', false);
+                this.$emit('close');
             }
         }
     },
@@ -37,7 +34,7 @@ export default {
         visible() {
             return this.modelValue;
         }
-    },
+    }
 };
 </script>
 
