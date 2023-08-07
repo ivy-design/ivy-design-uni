@@ -6,6 +6,7 @@
             <ivy-cell title="Overlay 遮罩层" to="/pages/components/overlay"></ivy-cell>
             <ivy-cell title="Popup 弹出层" to="/pages/components/popup"></ivy-cell>
             <ivy-cell title="ActionSheet 动作面板" to="/pages/components/action-sheet"></ivy-cell>
+            <ivy-cell title="Space 间隔" to="/pages/components/space"></ivy-cell>
         </ivy-cell-group>
     </view>
 </template>

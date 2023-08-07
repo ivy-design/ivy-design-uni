@@ -32,15 +32,20 @@
                 "enablePullDownRefresh": false
             }
 
-        }
-        ,{
-            "path" : "pages/components/action-sheet",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
+        }, {
+            "path": "pages/components/action-sheet",
+            "style": {
+                "navigationBarTitleText": "ActionSheet 动作面板",
                 "enablePullDownRefresh": false
             }
-            
+
+        }, {
+            "path": "pages/components/space",
+            "style": {
+                "navigationBarTitleText": "Space 间距",
+                "enablePullDownRefresh": false
+            }
+
         }
     ],
     "globalStyle": {
